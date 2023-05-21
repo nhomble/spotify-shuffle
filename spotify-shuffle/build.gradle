@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group 'io.github.nhomble'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'se.michaelthelin.spotify:spotify-web-api-java:8.0.0'
+    implementation 'info.picocli:picocli:4.7.3'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    archiveBaseName = 'spotify-shuffle'
+    archiveVersion =  '0.1.0'
+    manifest {
+        attributes 'Main-Class': 'io.github.nhomble.reallyshuffle.Cli'
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
