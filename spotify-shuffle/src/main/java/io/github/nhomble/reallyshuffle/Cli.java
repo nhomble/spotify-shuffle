@@ -22,6 +22,15 @@ public class Cli implements Runnable {
     @CommandLine.Option(names = "-s", required = true)
     private String clientSecret;
 
+    @CommandLine.Option(names = "-v")
+    private boolean verbose = false;
+
+    private void debug(String message) {
+        if (verbose) {
+            System.out.printf("[DEBUG] %s%n", message);
+        }
+    }
+
     @Override
     public void run() {
         try {
@@ -34,8 +43,11 @@ public class Cli implements Runnable {
                     .build()
                     .execute();
             spotifyApi.setAccessToken(refresh.getAccessToken());
+            debug("Fetched token");
 
+            debug("Fetching playlistId=" + playlistId);
             Playlist out = spotifyApi.getPlaylist(playlistId).build().execute();
+            debug("Got playlist named=[" + out.getName() + "]");
 
             int totalTracks = out.getTracks().getTotal();
             List<Integer> tracks = new ArrayList<>();
@@ -44,8 +56,11 @@ public class Cli implements Runnable {
             }
             Collections.shuffle(tracks);
 
-            for (int newPosition = 0; newPosition < tracks.size(); newPosition++)
+            debug("Shuffling the tracks...");
+            for (int newPosition = 0; newPosition < tracks.size(); newPosition++) {
+                debug(String.format("Swapping %d and %d", tracks.get(newPosition), newPosition));
                 spotifyApi.reorderPlaylistsItems(playlistId, tracks.get(newPosition), newPosition).build().execute();
+            }
         } catch (IOException | ParseException | SpotifyWebApiException e) {
             throw new RuntimeException(e);
         }
