@@ -17,7 +17,7 @@ This helper assumes the environment variable `SPOTIFY_CLIENT_SECRET` is set.
 
 ## Setup
 
-This spotify app isn't actually published. Additionally, the `client_id` is pasted in the source code,
+This spotify app isn't actually published. Additionally, the `client_id` is pasted in the source code, and
 the `client_secret` isn't shared. To run this yourself, you'll want to create your own spotify app with client/secret.
 Additionally, you'll want to configure your callback url to be `http://localhost:8080/callback` (or edit
 what `spotify-access` does).
