@@ -38,26 +38,18 @@ public class Cli implements Runnable {
             Playlist out = spotifyApi.getPlaylist(playlistId).build().execute();
 
             int totalTracks = out.getTracks().getTotal();
-            List<TrackNumber> tracks = new ArrayList<>();
+            List<Integer> tracks = new ArrayList<>();
             for (int i = 0; i < totalTracks; i++) {
-                tracks.add(new TrackNumber(i));
+                tracks.add(i);
             }
             Collections.shuffle(tracks);
 
             for (int newPosition = 0; newPosition < tracks.size(); newPosition++)
-                spotifyApi.reorderPlaylistsItems(playlistId, tracks.get(newPosition).position, newPosition).build().execute();
+                spotifyApi.reorderPlaylistsItems(playlistId, tracks.get(newPosition), newPosition).build().execute();
         } catch (IOException | ParseException | SpotifyWebApiException e) {
             throw new RuntimeException(e);
         }
 
-    }
-
-    static class TrackNumber {
-        public final int position;
-
-        public TrackNumber(int position) {
-            this.position = position;
-        }
     }
 
     public static void main(String[] args) {
