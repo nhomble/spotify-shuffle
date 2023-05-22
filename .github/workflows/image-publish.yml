@@ -31,3 +31,4 @@ jobs:
           registry: docker.pkg.github.com
           repository: nhomble/spotify-shuffle/spotify-shuffle
           tag_with_ref: true
+          context: ./spotify-shuffle
