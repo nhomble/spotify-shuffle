@@ -1,0 +1,18 @@
+name: shuffle nhomble
+
+on:
+  schedule:
+    - cron: "0 0 */2 * *"
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  shuffle:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/nhomble/spotify-shuffle:main
+    steps:
+      - name: shuffle
+        shell: bash
+        run: |
+          java -jar spotify-shuffle-0.1.0.jar -s ${{ secrets.SPOTIFY_SECRET_ID }} -t ${{ secrets.SPOTIFY_NHOMBLE_REFRESH_TOKEN }} -p 0L92ijWc4FVqgAvquSsUSC -v
