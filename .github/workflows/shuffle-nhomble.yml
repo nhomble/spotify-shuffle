@@ -15,4 +15,6 @@ jobs:
       - name: shuffle
         shell: bash
         run: |
+          pwd
+          ls
           java -jar spotify-shuffle-0.1.0.jar -s ${{ secrets.SPOTIFY_SECRET_ID }} -t ${{ secrets.SPOTIFY_NHOMBLE_REFRESH_TOKEN }} -p 0L92ijWc4FVqgAvquSsUSC -v
