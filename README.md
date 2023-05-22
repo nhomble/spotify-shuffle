@@ -21,3 +21,7 @@ This spotify app isn't actually published. Additionally, the `client_id` is past
 the `client_secret` isn't shared. To run this yourself, you'll want to create your own spotify app with client/secret.
 Additionally, you'll want to configure your callback url to be `http://localhost:8080/callback` (or edit
 what `spotify-access` does).
+
+### GitHub Actions
+
+Action secrets are setup for the `client_secret` and `refresh_token` to be fed into the cli.
