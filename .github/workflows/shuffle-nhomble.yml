@@ -12,10 +12,6 @@ jobs:
     container:
       image: ghcr.io/nhomble/spotify-shuffle:main
     steps:
-      - name: debug
-        shell: bash
-        run: |
-          pwd
       - name: shuffle
         shell: bash
         run: |
