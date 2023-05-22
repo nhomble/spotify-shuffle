@@ -20,7 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build image
-        run: docker build . --file ./spotify-shuffle/Dockerfile --tag $IMAGE_NAME
+        run: |
+          cd spotify-shuffle
+          docker build . --file Dockerfile --tag $IMAGE_NAME
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
         with:
