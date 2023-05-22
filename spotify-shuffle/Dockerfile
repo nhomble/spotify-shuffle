@@ -1,6 +1,7 @@
 FROM gradle:jdk17-alpine as build
 WORKDIR /opt/app
 COPY . .
+RUN ls /opt/app
 RUN gradle build
 
 FROM openjdk:17-jdk-slim
