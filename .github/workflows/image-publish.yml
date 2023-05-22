@@ -1,0 +1,31 @@
+name: image push
+
+on:
+  workflow_dispatch:
+  push:
+    # Publish `main` as Docker `latest` image.
+    branches:
+      - main
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+env:
+  IMAGE_NAME: spotify-shuffle
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: docker build ./spotify-shuffle --file Dockerfile --tag $IMAGE_NAME
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: nhomble/spotify-shuffle/spotify-shuffle
+          tag_with_ref: true
