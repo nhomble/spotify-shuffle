@@ -17,11 +17,15 @@ This helper assumes the environment variable `SPOTIFY_CLIENT_SECRET` is set.
 
 ## Setup
 
-This spotify app isn't actually published. Additionally, the `client_id` is pasted in the source code, and
-the `client_secret` isn't shared. To run this yourself, you'll want to create your own spotify app with client/secret.
-Additionally, you'll want to configure your callback url to be `http://localhost:8080/callback` (or edit
+This Spotify app isn't actually published. Additionally, the `client_id` is pasted in the source code, and
+the `client_secret` isn't shared. To run this yourself, you'll want to create your own Spotify app with client/secret.
+Additionally, you'll want to configure your callback URL to be `http://localhost:8080/callback` (or edit
 what `spotify-access` does).
 
 ### GitHub Actions
 
 Action secrets are setup for the `client_secret` and `refresh_token` to be fed into the cli.
+
+### playlist id
+
+The easiest thing is to get the share URL for your playlist. Given a URL like `https://open.spotify.com/playlist/{{playlistId}?}si={{si}}`, extract `playlistId` and pass it to the -p` argument of the cli.
