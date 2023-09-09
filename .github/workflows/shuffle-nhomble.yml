@@ -14,3 +14,4 @@ jobs:
         shell: bash
         run: |
           java -jar /opt/app/spotify-shuffle-0.1.0.jar -s ${{ secrets.SPOTIFY_SECRET_ID }} -t ${{ secrets.SPOTIFY_NHOMBLE_REFRESH_TOKEN }} -p 4kolGvuuMrJK8psGWC2IiB
+          java -jar /opt/app/spotify-shuffle-0.1.0.jar -s ${{ secrets.SPOTIFY_SECRET_ID }} -t ${{ secrets.SPOTIFY_NHOMBLE_REFRESH_TOKEN }} -p 1mJUMRiLDouPx8kHxuTYf6
