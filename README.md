@@ -28,4 +28,4 @@ Action secrets are setup for the `client_secret` and `refresh_token` to be fed i
 
 ### playlist id
 
-The easiest thing is to get the share URL for your playlist. Given a URL like `https://open.spotify.com/playlist/{{playlistId}?}si={{si}}`, extract `playlistId` and pass it to the -p` argument of the cli.
+The easiest thing is to get the share URL for your playlist. Given a URL like `https://open.spotify.com/playlist/{{playlistId}?}si={{si}}`, extract `playlistId` and pass it to the `-p` argument of the cli.
